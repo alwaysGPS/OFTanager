@@ -1,24 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import styled, { ThemeProvider } from "styled-components";
+import SubMenu from "./components/common/SubMenu";
+import TopMenu from "./components/common/TopMenu";
+import JobDetail from "./pages/batch/JobDetail";
+import Jobs from "./pages/batch/Jobs";
+import GlobalStyles from "./styles/GlobalStyles";
+import theme from "./styles/Theme";
+
+const Container = styled.div`
+  display: flex;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <GlobalStyles />
+      <ThemeProvider theme={theme}>
+        <TopMenu />
+        <BrowserRouter>
+          <Container>
+            <SubMenu />
+            <Routes>
+              <Route path="/" element={<Jobs title={"Jobs"} />}></Route>
+              <Route
+                path="/batch/jobs/detail"
+                element={<JobDetail title={"Job Details"} />}
+              ></Route>
+            </Routes>
+          </Container>
+        </BrowserRouter>
+      </ThemeProvider>
+    </>
   );
 }
 
