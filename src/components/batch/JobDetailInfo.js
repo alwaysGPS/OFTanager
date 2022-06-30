@@ -46,6 +46,11 @@ const Table = styled.table`
       border-bottom: 1px solid #f1f1f1;
     }
 
+    tr:nth-child(15),
+    tr:last-child {
+      width: 100%;
+    }
+
     .jobinfo_subject {
       width: 153px;
       height: 100%;
