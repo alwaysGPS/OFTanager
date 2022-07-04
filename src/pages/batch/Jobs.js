@@ -1,53 +1,23 @@
-import { Link, Route } from "react-router-dom";
-import { useState } from "react";
+import useState from "react";
 import styled from "styled-components";
-import SubMenu from "../../components/common/SubMenu";
 import TitleBar from "../../components/common/TitleBar";
 
-// react-bootstrap
-import Row from 'react-bootstrap/Row'
-import Col from 'react-bootstrap/Col'
-import Container from 'react-bootstrap/Container'
+// SerachCondition
+import SearchCondition from "../../components/batch/SearchCondition";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 // DatePicker
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css"
 
+// JobTable
+import JobTable from "../../components/batch/JobTable";
+
 const OutterContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(100vw - 220px);
   height: 100vh;
-`;
-
-const StyledContainer = styled(Container)`
-  background-color: rgb(247, 249, 251);
-  /* flex-wrap: nowrap; */
-  max-width: 100%;
-  padding : 20px;
-  
-  .Row {
-    margin : 5px;
-  }
-
-  .Col {
-    min-width: 250px;
-    /*
-    height: 48px;
-    display: flex;
-    flex-direction: column; 
-    */
-  }
-  
-  .scTitle { 
-    color: #3f699d;
-    font-weight: bold;
-    }
-
-  .DatePickerComponent {
-    width: 110px;
-  }
 `;
 
 const DatePickerComponent = () => {
@@ -62,37 +32,6 @@ const DatePickerComponent = () => {
 };
 
 
-function SerchCondition() {
-  return (
-    <StyledContainer>
-      <Row lg={4}>
-        <Col className="col-2">
-          <span className="scTitle">Job ID (From)</span><br/>
-          <input type="text" placeholder="Job ID" id="jobId" />
-        </Col>
-        <Col className="col-2">
-          <span className="scTitle">Job Name</span><br/>
-          <input type="text" placeholder="Job Name" id="jobName" />
-        </Col>
-        <Col className="col-2">
-          <span className="scTitle">User ID</span><br/>
-          <input type="text" placeholder="User ID" id="userId" />
-        </Col>
-      </Row>
-      <Row lg={2}>
-        <Col className="col-2">
-          <span className="scTitle">Submit Date</span><br/>
-          <DatePickerComponent></DatePickerComponent> ~
-          <DatePickerComponent></DatePickerComponent>
-        </Col>
-        <Col>
-          <span className="scTitle">Status</span><br/>
-          {/* <CheckboxLabels></CheckboxLabels> */}
-        </Col>
-      </Row>
-    </StyledContainer>
-  );
-}
 
 function CheckboxLabels() {
   const checkBoxList = [ 
@@ -169,12 +108,9 @@ function Jobs({ title }) {
   return (
     <OutterContainer>
       <TitleBar title={title} />
-      <SerchCondition>
-        
-      </SerchCondition>
-
-      <br/><br/><br/>
-      <Link to={`/batch/jobs/detail`}>JobDetail</Link>
+      <SearchCondition>
+      </SearchCondition>
+      <JobTable/>
     </OutterContainer>
   );
 }
