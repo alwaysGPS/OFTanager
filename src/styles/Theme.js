@@ -20,6 +20,7 @@ const colors = {
   buttonDisabled: "#b7b7b7",
   refreshBtnText: "#888888",
   refreshBtnBack: "#FAFAFA",
+  searchBtnBack: "#4085EE"
 };
 
 const theme = {
