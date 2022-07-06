@@ -29,4 +29,18 @@ const RefreshButton = styled(Button)`
   }
 `;
 
-export { Button, RefreshButton };
+const SearchButton = styled(Button)`
+ width: 85px;
+
+  background-color: ${({ theme }) => theme.colors.searchBtnBack};
+
+  span {
+    font-weight: 700;
+  }
+
+  .icon {
+    margin-right: 4px;
+}
+`;
+
+export { Button, RefreshButton, SearchButton };
